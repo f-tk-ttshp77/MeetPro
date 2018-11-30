@@ -1,0 +1,201 @@
+/* /rooms/show ================================ */
+.main_scroll {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  background-color: #f5f8fa;
+  display: flex;
+  height:100vh;
+  flex-direction: row;
+}
+
+.memo_container {
+  height: 100%;
+  padding: 70px 15px 15px 15px;
+  text-align: center;
+  flex-grow: 1;
+  flex-basis: 0;
+  overflow-y: scroll;
+  background-color: #2a4c84;
+
+  .sub_title h4 {
+    color: white;
+    position: relative;
+    display: inline-block;
+    &:before {left: 0;}
+    &:after {right: 0;}
+
+    &:before, &:after{
+      content: '';
+      position: absolute;
+      top: 50%;
+      display: inline-block;
+      height: 1px;
+      background-color: white;
+    }
+  }
+
+  .goal_container {
+    h4 {
+      padding: 0 95px;
+      &:before, &:after{
+        width: 85px;
+      }
+    }
+  }
+
+  .agenda_container {
+    h4 {
+      padding: 0 71px;
+      &:before, &:after{
+        width: 61px;
+      }
+    }
+  }
+
+  .decision_container {
+    h4 {
+      padding: 0 78px;
+      &:before, &:after{
+        width: 68px;
+      }
+    }
+  }
+
+  .problem_container {
+    h4 {
+      padding: 0 95px;
+      &:before, &:after{
+        width: 85px;
+      }
+    }
+  }
+}
+
+.sidemsg_content_box {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  border: 1px solid #182c4c;
+  border-radius: 4px;
+  text-align: left;
+  padding: 0px 5px;
+  background-color: #182c4c;
+  color: white;
+
+  .sidemsg_name {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .sidemsg_content {
+    font-size: 14px;
+  }
+}
+
+.flex_end_container {
+  flex-grow: 4;
+  flex-basis: 0;
+  padding-top: 64px;
+  height: 100vh;
+  .message_index_container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    #messages {
+      flex-grow: 1;
+      flex-basis: 0;
+      overflow-y: scroll;
+      .messages {
+        padding-bottom: 3px;
+        .msg_img_box {
+          width: 8%;
+          display: inline-block;
+          float: left;
+          padding-top: 5px;
+          padding-left: 10px;
+          padding-right: 10px;
+
+          img {
+            width: 38px;
+            height: 38px;
+            border-radius: 20%;
+            box-shadow: 2px 2px 4px #c1ced7;
+            object-fit: cover;
+            float: right;
+          }
+        }
+
+        .msg_content_box {
+          width: 80%;
+          display: inline-block;
+
+          .msg_name {
+            font-size: 12px;
+            font-weight: bold;
+          }
+
+          .msg_type_btn {
+            font-size: 12px;
+            font-weight: bold;
+          }
+
+          .msg_time {
+            font-size: 6px;
+            color: gray;
+          }
+          .msg_content {
+
+          }
+        }
+      }
+    }
+
+    .footer_msgs {
+      padding: 10px 15px;
+      background-color: white;
+      .input {
+        width: 70%;
+        display: inline-block;
+        vertical-align: top;
+        input {
+          height: 44px;
+          width: 100%;
+          font-size: 16px;
+          border: 2px solid #848484;
+          padding: 10px;
+          color: #57575f;
+          letter-spacing: 2px;
+          border-radius: 4px;
+        }
+      }
+
+      .msgtypes_container {
+        display: inline-block;
+        .msgtypetag {
+          font-size: 12px;
+          margin-left: 3px;
+          font-weight: bold;
+          color: #848484;
+        }
+        .chosen {color: red;}
+      }
+    }
+  }
+}
+/* msg_typeごとの背景色指定 ================================ */
+.type1 {background-color: white;}
+.type2 {background-color: rgba(204, 0, 0, 0.1);}
+.type3 {background-color: rgba(153, 204, 0, 0.1);}
+.type4 {background-color: rgba(0, 204, 102, 0.1);}
+.type5 {background-color: rgba(0, 51, 204, 0.1);}
+.type6 {background-color: rgba(204, 0, 204, 0.1);}
+.type7 {background-color: rgba(204, 85, 0, 0.1);}
+.type8 {background-color: rgba(67, 204, 0, 0.1);}
+.type9 {background-color: rgba(0, 204, 186, 0.1);}
+.type10 {background-color: rgba(34, 0, 204, 0.1);}
+.type11 {background-color: rgba(204, 0, 118, 0.1);}
+.type12 {background-color: rgba(204, 170, 0, 0.1);}
+.type13 {background-color: rgba(0, 204, 17, 0.1);}
+.type14 {background-color: rgba(0, 135, 204, 0.1);}
+.type15 {background-color: rgba(118, 0, 204, 0.1);}

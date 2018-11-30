@@ -1,0 +1,93 @@
+<div class="image-editor-modal-wrapper" id="image-editor-modal">
+  <div class="modal">
+    <div class="close-modal">
+      <i class="fa fa-2x fa-times"></i>
+    </div>
+    <div id="image-editor-form">
+      <%= form_tag("/users/#{@user.id}/update_image", {multipart: true}) do %>
+        <p>プロフィール画像変更</p>
+        <input name="image" type="file" accept="image/jpeg">
+        <input type="submit" value="保存">
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="profile_container">
+    <div class="user_info">
+      <img src="<%= "/user_images/#{@user.image_name}?#{Time.now.to_i}" %>">
+      <h2><%= @user.name %></h2>
+      <p><%= @user.email %></p>
+      <% if @user.id == @current_user.id %>
+      <div class="image-editor-show">画像変更</div>
+      <% end %>
+    </div>
+    <% @user.errors.full_messages.each do |message| %>
+      <div class="form-error">
+        <%= message %>
+      </div>
+    <% end %>
+    <div class="account_editor">
+      <% if @user.id == @current_user.id %>
+        <%= link_to("プロフィールの変更", "/users/edit") %>
+      <% end %>
+    </div>
+  </div>
+  <div class="room_container">
+    <div class="room_tab_container">
+      <div class="room_tab maker selected">
+        <p>会議室の作成</p>
+      </div>
+      <div class="room_tab addition unselected">
+        <p>会議室の追加</p>
+      </div>
+    </div>
+    <div id="room_maker" class="room_maker">
+      <%= form_tag("/rooms/create") do %>
+        <input name="name" class="room_input" placeholder="会議タイトル" value="<%= params[:name]%>">
+        <input name="roomidname" class="room_input" placeholder="ID (半角英数字記号/4-20字)" value="<%= params[:roomidname]%>">
+        <input name="room_password" class="room_input" placeholder="パスワード (半角英数字記号/6-20字)" value="<%= params[:room_password]%>">
+        <br>
+        <input type="submit" value="作成">
+      <% end %>
+    </div>
+
+    <div id="room_add" class="room_maker">
+      <%= form_tag("/rooms/addition") do %>
+        <input name="roomidname" class="room_input" placeholder="ID (半角英数字記号/4-20字)">
+        <input type="password" name="room_password" class="room_input" placeholder="パスワード (半角英数字記号/6-20字)">
+        <br>
+        <input type="submit" value="追加">
+      <% end %>
+    </div>
+
+    <div class="room_index sub_title">
+      <h2>会議室一覧</h2>
+      <div class="rooms_container">
+        <% @rooms.reverse_each do |room| %>
+        <div id="room_container">
+          <div class="room_box">
+            <div class="room_tags">
+              <%= link_to("/users/state_change/#{room.id}", {method: "post"}) do %>
+                <% if room.room_state == "0" %>
+                  <p class="open_tag">open</p>
+                <% else %>
+                  <p class="close_tag">close</p>
+                <% end %>
+              <% end %>
+            </div>
+            <%= link_to("/rooms/#{room.id}") do %>
+              <div class="room_box_content">
+                <h4><%= room.name %></h4>
+                <p>ID : <%= room.roomidname %></p>
+                <p><%= simple_time(room.created_at) %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

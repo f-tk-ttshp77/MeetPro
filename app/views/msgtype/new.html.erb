@@ -1,0 +1,17 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>Messagetypeの新規作成</h1>
+<%= form_tag("/msgtype/create") do %>
+  <input name="name">
+  <input type="submit" value="作成">
+<% end %>
+<h2>Messagetype一覧</h2>
+<% @msgtypes.each do |msgtype| %>
+<p><%= msgtype.content %></p>
+<% end %>

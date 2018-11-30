@@ -1,0 +1,60 @@
+<div class="main_scroll">
+  <div class="memo_container">
+    <div class="goal_container sub_title">
+      <h4>目的</h4>
+      <div id="gomessages">
+        <%= render partial: 'messages/sidemessage', collection: @gomessages %>
+      </div>
+    </div>
+    <div class="agenda_container sub_title">
+      <h4>アジェンダ</h4>
+      <div id="agmessages">
+        <%= render partial: 'messages/sidemessage', collection: @agmessages %>
+      </div>
+    </div>
+    <div class="decision_container sub_title">
+      <h4>決定事項</h4>
+      <div id="demessages">
+        <%= render partial: 'messages/sidemessage', collection: @demessages %>
+      </div>
+    </div>
+    <div class="problem_container sub_title">
+      <h4>課題</h4>
+      <div id="pbmessages">
+        <%= render partial: 'messages/sidemessage', collection: @pbmessages %>
+      </div>
+    </div>
+  </div>
+  <div class="flex_end_container">
+    <div class="message_index_container">
+      <div id="messages" data-room_id="<%= @room.id %>">
+        <%= render @messages %>
+      </div>
+      <div class="footer_msgs">
+        <div class="input">
+          <form>
+            <input id="msg_content" type="text" data-behavior="room_speaker" name="3" placeholder="「ctrl/command」+「矢印」:タグ選択　　　　「Enter」:送信">
+          </form>
+        </div>
+        <div class="msgtypes_container">
+          <span name="1" class="msgtypetag downline1 chosen flag start" >感想</span>
+          <span name="2" class="msgtypetag downline1">主張</span>
+          <span name="3" class="msgtypetag downline1">理由</span>
+          <span name="4" class="msgtypetag downline1">事実</span>
+          <span name="5" class="msgtypetag downline2">賛成</span>
+          <span name="6" class="msgtypetag downline2">反対</span>
+          <span name="7" class="msgtypetag downline2">提案</span>
+          <span name="8" class="msgtypetag downline3 edge1">推量</span>
+          <br>
+          <span name="9" class="msgtypetag upline1 edge2">質問</span>
+          <span name="10" class="msgtypetag upline1">回答</span>
+          <span name="11" class="msgtypetag upline1">目的</span>
+          <span name="12" class="msgtypetag upline1">アジェンダ</span>
+          <span name="13" class="msgtypetag upline2">課題</span>
+          <span name="14" class="msgtypetag upline2">決定事項</span>
+          <span name="15" class="msgtypetag upline2 end">懸念</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="messages type<%= message.msgtype.id %>">
+  <div class="msg_img_box">
+    <img class="msg_img" src="<%= "/user_images/#{message.user.image_name}" %>">
+  </div>
+  <div class="msg_content_box">
+    <span class="msg_name"><%= message.user.name %></span>
+    <span class="msg_type_btn"><%= message.msgtype.content %></span>
+    <span class="msg_time"><%= simpler_time(message.created_at) %></span>
+      <br>
+    <span class="msg_content"><%= message.content %></span>
+  </div>
+</div>

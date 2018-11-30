@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MeetPro</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-logo">
+        <%= link_to('/') do %>
+          <img src="/logo.png">
+        <% end %>
+        <% if @room %>
+          <h2><%= @room.name %></h2>
+        <% else %>
+          <h2>Meet Pro</h2>
+        <% end %>
+      </div>
+      <div class="header-menus">
+        <ul>
+          <% if user_signed_in? %>
+          <li>
+            <%= link_to("Mypage", "/users/my_page") %>
+          </li>
+          <li>
+            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+          </li>
+          <% else %>
+            <li>
+              <%= link_to("About", "/about") %>
+            </li>
+            <li>
+              <%= link_to('Login', new_user_session_path) %>
+            </li>
+            <li>
+              <%= link_to("Register", "/users/sign_up") %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </header>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
